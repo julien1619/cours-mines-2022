@@ -17,18 +17,20 @@ export default function Exercise1() {
       </ul>
 
       <table className="table">
-        <tr>
-          <th>Balise</th>
-          <th>Contenu</th>
-        </tr>
-        <tr>
-          <td>a</td>
-          <td>texte</td>
-        </tr>
-        <tr>
-          <td>ul</td>
-          <td>li</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Balise</th>
+            <th>Contenu</th>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>texte</td>
+          </tr>
+          <tr>
+            <td>ul</td>
+            <td>li</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
