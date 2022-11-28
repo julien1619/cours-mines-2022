@@ -1,10 +1,58 @@
+import PostTweet from "../../../components/PostTweet";
+import Tweet from "../../../components/Tweet";
+import { Tweet as TweetModel } from "../../../types/Tweet";
 import styles from "./Twitter.module.css";
 
-export default function Twitter() {
+const tweets: TweetModel[] = [
+  {
+    id: "1",
+    message: "Test 1",
+    date: new Date(),
+    likeCount: 2,
+    retweetCount: 0,
+    author: {
+      id: "1",
+      pseudo: "Martin",
+    },
+    liked: true,
+    retweeted: false,
+  },
+  {
+    id: "2",
+    message: "Test 2",
+    date: new Date(),
+    likeCount: 0,
+    retweetCount: 3,
+    author: {
+      id: "2",
+      pseudo: "Julien",
+    },
+    liked: false,
+    retweeted: true,
+  },
+  {
+    id: "3",
+    message: "Test 3",
+    date: new Date(),
+    likeCount: 2,
+    retweetCount: 3,
+    author: {
+      id: "1",
+      pseudo: "Martin",
+    },
+    liked: false,
+    retweeted: false,
+  },
+];
+
+export default function Timeline() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.messages}></div>
-      <div className={styles.post}></div>
+    <div className="container">
+      <PostTweet />
+      <div className={styles.messages}>
+        <h1>Timeline</h1>
+        <div>{/* <Tweet /> */}</div>
+      </div>
     </div>
   );
 }
