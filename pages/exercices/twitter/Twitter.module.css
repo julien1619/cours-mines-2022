@@ -1,0 +1,15 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex-grow: 1;
+  background-color: red;
+}
+
+.post {
+  height: 150px;
+  background-color: blue;
+}
