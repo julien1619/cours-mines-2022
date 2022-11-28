@@ -51,7 +51,11 @@ export default function Timeline() {
       <PostTweet />
       <div className={styles.messages}>
         <h1>Timeline</h1>
-        <div>{/* <Tweet /> */}</div>
+        <div>
+          {tweets.map((tweet) => (
+            <Tweet key={tweet.id} tweet={tweet} />
+          ))}
+        </div>
       </div>
     </div>
   );

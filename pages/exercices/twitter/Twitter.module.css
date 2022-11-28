@@ -6,10 +6,8 @@
 
 .messages {
   flex-grow: 1;
-  background-color: red;
 }
 
 .post {
   height: 150px;
-  background-color: blue;
 }
