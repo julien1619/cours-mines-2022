@@ -1,7 +1,7 @@
 export type BeepModel = {
     id: string;
     authorId: string;
-    createdAt: Date;
+    createdAt: string;
     content: string;
     likeCount: number;
     liked: boolean;
