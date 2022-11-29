@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import Beep from "../../../../components/Beep";
-import PostTweet from "../../../../components/PostTweet";
+import PostBeep from "../../../../components/PostBeep";
 import { BeepModel } from "../../../../types/BeepModel";
 import { useEffect, useState } from "react";
 import { apiClient } from "../../../../api-client/api-client"
@@ -13,11 +13,27 @@ export default function Home() {
         apiClient.get("/home").then(response => setBeeps(response.data))
     }, []);
 
+    const addBeep = (newBeep: BeepModel) => {
+        setBeeps([newBeep, ...beeps]);
+    }
+
+    const setLikedState = (beepId: string, liked: boolean) => {
+        const likedBeep = beeps.find(beep => beep.id === beepId);
+        if (likedBeep === undefined) {
+            throw new Error("Unexpected state");
+        }
+
+        likedBeep.liked = liked;
+        likedBeep.likeCount+= liked ? 1 : -1;
+    
+        setBeeps([...beeps]);
+    }
+
     return (
         <div className={`container ${styles.mainContent}`}>
             <h1>Home</h1>
-            <PostTweet></PostTweet>
-            {beeps.map(beep => <Beep beep={beep} key={beep.id}></Beep>)}
+            <PostBeep addBeep={addBeep}></PostBeep>
+            {beeps.map(beep => <Beep setLikedStatus={setLikedState} beep={beep} key={beep.id}></Beep>)}
         </div>
     );
 }
