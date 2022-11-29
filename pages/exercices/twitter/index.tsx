@@ -1,4 +1,4 @@
-import PostTweet from "../../../components/PostTweet";
+import PostBeep from "../../../components/PostBeep";
 import Tweet from "../../../components/Tweet";
 import { Tweet as TweetModel } from "../../../types/Tweet";
 import styles from "./Twitter.module.css";
@@ -48,7 +48,7 @@ const tweets: TweetModel[] = [
 export default function Timeline() {
   return (
     <div className="container">
-      <PostTweet />
+      <PostBeep />
       <div className={styles.messages}>
         <h1>Timeline</h1>
         <div>

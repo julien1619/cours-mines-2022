@@ -1,12 +1,27 @@
+import axios from "axios";
 import Link from "next/link";
+import { apiClient } from "../api-client/api-client";
 import { BeepModel } from "../types/BeepModel"
 import styles from "./Beep.module.css";
 
 type Props = {
-    beep: BeepModel
+    beep: BeepModel;
+    setLikedStatus: (beepId: string, liked: boolean) => void
 }
 
 export default function Beep(props: Props) {
+    const toggleLike = () => {
+        if (!props.beep.liked) {
+            apiClient.put(`/like/${props.beep.id}`).then(
+                () => props.setLikedStatus(props.beep.id, true)
+            );
+        } else {
+            apiClient.put(`/unlike/${props.beep.id}`).then(
+                () => props.setLikedStatus(props.beep.id, false)
+            );
+        }
+    }
+
     return (
         <div className={`card ${styles.beep}`}>
             <div className="card-body">
@@ -20,8 +35,10 @@ export default function Beep(props: Props) {
                 </p>
             </div>
             <div className="card-footer">
-                <span>❤️</span>
-                <span className={styles.likeCount}>  {props.beep.likeCount}</span>
+                <button onClick={toggleLike} className="btn">
+                    {props.beep.liked ? '❤️' : '🖤'}
+                    <span className={styles.likeCount}>{props.beep.likeCount}</span>
+                </button>
             </div>
         </div>
     );
